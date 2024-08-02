@@ -6,9 +6,9 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
 -JavaScript
 -HTML & CSS
 -React
--Nose.js
+-Node.js
 -PostgreSQL
-##Colaboradores
+## Colaboradores
 - Camily Gonçalves de Bem
 - Paulo Eduardo Pereira Carvalho
 - Pedro Henrique Cabral Moreira
