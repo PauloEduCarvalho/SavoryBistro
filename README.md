@@ -29,7 +29,7 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
 - CSS3 
 - React v13.4.0
 - Node.js v20.16.0
-- PostgreSQL v16.1
+- PostgreSQL v16.4.1
 
 # Estrutura do Projeto
 
