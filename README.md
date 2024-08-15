@@ -33,38 +33,40 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
 
 # Estrutura do Projeto
 
-Esta seção descreve a estrutura de pastas do projeto. 
+Esta seção descreve a estrutura de pastas do projeto.
 
 ## Estrutura de Pastas
+
 ```markdown
-/my-project
+/savory-bistro
 │
 ├── /config              # Arquivos de configuração (e.g., banco de dados, variáveis de ambiente)
 │
 ├── /controllers         # Funções que lidam com as requisições HTTP
-│   └── userController.js  # Exemplo de controlador
 │
 ├── /models              # Modelos de dados e interações com o banco de dados
-│   └── userModel.js     # Exemplo de modelo de dados
 │
 ├── /routes              # Definições das rotas da API
-│   └── userRoutes.js    # Exemplo de rotas
 │
 ├── /services            # Lógica de negócios e regras de aplicação
-│   └── userService.js   # Exemplo de serviço
 │
 ├── /utils               # Funções utilitárias e helpers
-│   └── logger.js        # Exemplo de utilitário
 │
 ├── /middlewares         # Middlewares para validação, autenticação, etc.
-│   └── authMiddleware.js  # Exemplo de middleware
 │
-├── /views               # (Opcional) Arquivos de visualização, se necessário
+├── /src                 # Código fonte principal do projeto
+│   ├── /api             # Implementação da API
+│   ├── /database        # Scripts e funções relacionados ao banco de dados
+│   └── /app             # Configuração e inicialização do aplicativo
+│
+├── /padroesadotados     # Documentação e padrões de requisitos adotados
+│
+├── /requisitos          # Documentos de requisitos do projeto
 │
 ├── .env                 # Arquivo de variáveis de ambiente
 ├── package.json          # Gerenciador de pacotes e scripts
 ├── server.js            # Ponto de entrada principal da aplicação
-└── README.md            # Documentação do projeto
+└── README.md            # Documentação do projetoção do projeto
 ```
 
 ## Regras de Uso do Git em Projetos
