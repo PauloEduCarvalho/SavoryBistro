@@ -24,10 +24,11 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
  - RFN04: O sistema deve ter diferentes níveis de acesso entre cliente e admin
  
 ## Tecnologias Utilizadas (colocar versoes)
-- JavaScript
-- HTML & CSS
-- React
-- Node.js
+- JavaScript (a versão depende do ambiente de execução, normalmente suportada pela versão node apresentada abaixo)
+- HTML5
+- CSS3 
+- React v13.4.0
+- Node.js v20.16.0
 - PostgreSQL
 
 ## Colaboradores
