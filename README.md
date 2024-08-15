@@ -120,10 +120,6 @@ Para garantir a legibilidade, manutenção e qualidade do código, siga as segui
 - **Funções Pequenas e Simples**: Mantenha as funções pequenas e com uma única responsabilidade. Isso facilita a compreensão e a reutilização do código.
 
 
-## Referências
-
-Para mais informações, consulte os documentos e vídeos disponíveis na sala virtual, tópicos de codificação, que detalham práticas recomendadas para SOLID e CLEAN CODE.
-
 
 
 ## Colaboradores
