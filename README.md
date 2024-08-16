@@ -23,13 +23,104 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
  - RFN03: O relatório deve ser gerado em até 5 segundos.
  - RFN04: O sistema deve ter diferentes níveis de acesso entre cliente e admin
  
-## Tecnologias Utilizadas (colocar versoes)
+## Tecnologias Utilizadas 
 - JavaScript (a versão depende do ambiente de execução, normalmente suportada pela versão node apresentada abaixo)
 - HTML5
 - CSS3 
 - React v13.4.0
 - Node.js v20.16.0
-- PostgreSQL
+- PostgreSQL v16.4.1
+
+# Estrutura do Projeto
+
+Esta seção descreve a estrutura de pastas do projeto.
+
+## Estrutura de Pastas
+
+```markdown
+/savory-bistro
+│
+├── /config              # Arquivos de configuração (e.g., banco de dados, variáveis de ambiente)
+│
+├── /controllers         # Funções que lidam com as requisições HTTP
+│
+├── /models              # Modelos de dados e interações com o banco de dados
+│
+├── /routes              # Definições das rotas da API
+│
+├── /services            # Lógica de negócios e regras de aplicação
+│
+├── /utils               # Funções utilitárias e helpers
+│
+├── /middlewares         # Middlewares para validação, autenticação, etc.
+│
+├── /src                 # Código fonte principal do projeto
+│   ├── /api             # Implementação da API
+│   ├── /database        # Scripts e funções relacionados ao banco de dados
+│   └── /app             # Configuração e inicialização do aplicativo
+│
+├── /padroesadotados     # Documentação e padrões de requisitos adotados
+│
+├── /requisitos          # Documentos de requisitos do projeto
+│
+├── .env                 # Arquivo de variáveis de ambiente
+├── package.json          # Gerenciador de pacotes e scripts
+├── server.js            # Ponto de entrada principal da aplicação
+└── README.md            # Documentação do projetoção do projeto
+```
+
+## Regras de Uso do Git em Projetos
+
+### Estratégia de Branches e Convenções de Commit
+
+#### Branches
+
+- **Branch de Desenvolvimento**: Trabalhe em novas funcionalidades e correções na branch `desenvolvimento`.
+- **Branch Principal (`main`)**: No fim de cada sprint, faça o merge das mudanças da branch `desenvolvimento` para a branch `main` e execute a release.
+
+#### Convenções de Commit
+
+Antes de fazer um commit, use os seguintes prefixos para categorizar o tipo de mudança:
+
+- `feat`: Para novas funcionalidades (ex: `feat: adiciona sistema de login`)
+- `fix`: Para correções de bugs (ex: `fix: corrige erro na validação de formulário`)
+- `docs`: Para atualizações na documentação (ex: `docs: atualiza guia de instalação`)
+- `test`: Para adição ou modificação de testes (ex: `test: adiciona testes de integração`)
+
+### Merge e Pull Requests
+
+- **Revisão de Código**: Todos os pull requests devem ser revisados antes de serem aprovados.
+- **Merge Conflicts**: Resolva conflitos de merge de forma cuidadosa para garantir que as alterações sejam integradas corretamente.
+
+## Documentação
+
+- **README**: Mantenha um arquivo `README.md` atualizado com informações sobre o projeto.
+
+### Segurança e Acesso
+
+- **Controle de Acesso**: Defina permissões adequadas para quem pode acessar e modificar o repositório.
+
+# Boas Práticas de Codificação
+
+Para garantir a legibilidade, manutenção e qualidade do código, siga as seguintes boas práticas:
+
+## 1. **Padrão de Notação de Código**
+
+- **Consistência**: Adote um padrão de notação consistente em todo o projeto. Utilize ferramentas de formatação automática, como Prettier para JavaScript ou Black para Python, para manter a uniformidade do código.
+- **Nomenclatura**: Use nomes de variáveis, funções e classes que sejam descritivos e sigam uma convenção padrão, como camelCase para variáveis e funções, e PascalCase para classes.
+
+## 2. **Comentários e Documentação**
+
+- **Comentários Claros e Úteis**: Comente o código apenas quando necessário para esclarecer a lógica complexa ou as intenções do código. Evite comentários óbvios que apenas repetem o que o código já está fazendo.
+- **Documentação**: Mantenha a documentação atualizada, incluindo um arquivo `README.md` que descreva a finalidade do projeto, como configurar e usar, e qualquer outra informação relevante. Utilize comentários Javadoc ou docstrings para documentar funções e classes.
+
+## 3. **Princípios de Clean Code**
+
+- **Legibilidade**: O código deve ser escrito de forma que seja facilmente compreendido por outros desenvolvedores. Utilize nomes descritivos e evite técnicas complexas desnecessárias.
+- **Funções Pequenas e Simples**: Mantenha as funções pequenas e com uma única responsabilidade. Isso facilita a compreensão e a reutilização do código.
+
+
+
 
 ## Colaboradores
 - Camily Gonçalves de Bem
