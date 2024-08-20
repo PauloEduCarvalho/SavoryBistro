@@ -22,5 +22,6 @@ const connection =async() => {
 }
 
 export {
-    connection
+    connection,
+    UserModel
 }
