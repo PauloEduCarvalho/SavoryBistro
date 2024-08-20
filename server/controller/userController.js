@@ -1,6 +1,3 @@
-
-// server/controller/userController.js
-
 import { UserModel } from '../postgres/postgres.js';
 
 // Função para criar um novo usuário
