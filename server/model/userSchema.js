@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-export const createUserModel = async(sequelize) => {
+export const createUserModel = async (sequelize) => {
     const User = sequelize.define('User', {
         name: {
             type: DataTypes.STRING,
@@ -19,12 +19,11 @@ export const createUserModel = async(sequelize) => {
         role: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        empId: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
         }
+    }, {
+        // Adiciona a opção timestamps para criar automaticamente createdAt e updatedAt
+        timestamps: true
     });
+
     return User;
-}
+};
