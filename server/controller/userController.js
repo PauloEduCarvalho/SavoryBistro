@@ -2,11 +2,11 @@ import { UserModel } from '../postgres/postgres.js';
 
 // Função para criar um novo usuário
 export const createUser = async (req, res) => {
-    const { name, email, password, role} = req.body;
+    const { name, email, password, role, cpf, contact, address } = req.body;
 
     console.log("Received data:", req.body);
 
-    if (!name || !email || !password || !role) {
+    if (!name || !email || !password || !role || !cpf || !contact || !address) {
         return res.status(400).json({ message: "Missing required fields" });
     }
 
@@ -15,8 +15,10 @@ export const createUser = async (req, res) => {
             name,
             email,
             password,
-            role
-         
+            role,
+            cpf,
+            contact,
+            address
         });
         res.status(201).json(newUser);
     } catch (error) {
@@ -58,7 +60,7 @@ export const getUserById = async (req, res) => {
 // Função para atualizar um usuário pelo ID
 export const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { name, email, password, role, userId } = req.body;
+    const { name, email, password, role, cpf, contact, address } = req.body;
 
     try {
         const user = await UserModel.findByPk(id);
@@ -68,7 +70,9 @@ export const updateUser = async (req, res) => {
             user.email = email || user.email;
             user.password = password || user.password;
             user.role = role || user.role;
-            user.userId = userId || user.userId; // Atualize userId se fornecido
+            user.cpf = cpf || user.cpf;
+            user.contact = contact || user.contact;
+            user.address = address || user.address;
 
             await user.save();
             res.status(200).json(user);
@@ -80,6 +84,7 @@ export const updateUser = async (req, res) => {
         res.status(500).json({ message: "Error updating user", error });
     }
 };
+
 
 // Função para excluir um usuário pelo ID
 export const deleteUser = async (req, res) => {

@@ -9,7 +9,7 @@ export const createUserModel = async (sequelize) => {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            islowercase: true,
+            isLowercase: true,
             unique: true
         },
         password: {
@@ -19,9 +19,21 @@ export const createUserModel = async (sequelize) => {
         role: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        cpf: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        contact: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
-        // Adiciona a opção timestamps para criar automaticamente createdAt e updatedAt
         timestamps: true
     });
 
