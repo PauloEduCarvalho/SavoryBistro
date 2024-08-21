@@ -1,5 +1,4 @@
 // server/index.js
-
 import express from 'express';
 import { connection } from './postgres/postgres.js';
 import router from './view/routes.js';
@@ -15,4 +14,4 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-connection();
+connection(); 
