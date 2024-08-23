@@ -28,7 +28,7 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
 - HTML5
 - CSS3 
 - React v13.4.0
-- Node.js v20.16.0
+- Node.js v20.12.1
 - PostgreSQL v16.4.1
 
 # Estrutura do Projeto
@@ -39,33 +39,31 @@ Esta seção descreve a estrutura de pastas do projeto.
 
 ```markdown
 /savory-bistro
+server/
 │
-├── /config              # Arquivos de configuração (e.g., banco de dados, variáveis de ambiente)
+├── model/
+│   ├── userSchema.js
+│   ├── dishSchema.js
+│   └── orderSchema.js
 │
-├── /controllers         # Funções que lidam com as requisições HTTP
+├── postgres/
+│   └── postgres.js
 │
-├── /models              # Modelos de dados e interações com o banco de dados
+├── controller/
+│   ├── userController.js
+│   ├── dishController.js
+│   └── orderController.js
 │
-├── /routes              # Definições das rotas da API
-│
-├── /services            # Lógica de negócios e regras de aplicação
-│
-├── /utils               # Funções utilitárias e helpers
-│
-├── /middlewares         # Middlewares para validação, autenticação, etc.
-│
-├── /src                 # Código fonte principal do projeto
-│   ├── /api             # Implementação da API
-│   ├── /database        # Scripts e funções relacionados ao banco de dados
-│   └── /app             # Configuração e inicialização do aplicativo
+├── view/
+│   └── routes.js
+│   package.json          # Gerenciador de pacotes e scripts
+└── index.js              # Ponto principal de entrada do sistema
 │
 ├── /padroesadotados     # Documentação e padrões de requisitos adotados
 │
 ├── /requisitos          # Documentos de requisitos do projeto
 │
-├── .env                 # Arquivo de variáveis de ambiente
-├── package.json          # Gerenciador de pacotes e scripts
-├── server.js            # Ponto de entrada principal da aplicação
+
 └── README.md            # Documentação do projetoção do projeto
 ```
 
@@ -112,14 +110,12 @@ Para garantir a legibilidade, manutenção e qualidade do código, siga as segui
 ## 2. **Comentários e Documentação**
 
 - **Comentários Claros e Úteis**: Comente o código apenas quando necessário para esclarecer a lógica complexa ou as intenções do código. Evite comentários óbvios que apenas repetem o que o código já está fazendo.
-- **Documentação**: Mantenha a documentação atualizada, incluindo um arquivo `README.md` que descreva a finalidade do projeto, como configurar e usar, e qualquer outra informação relevante. Utilize comentários Javadoc ou docstrings para documentar funções e classes.
+- **Documentação**: Mantenha a documentação atualizada, incluindo um arquivo `README.md` que descreva a finalidade do projeto, como configurar e usar, e qualquer outra informação relevante. 
 
 ## 3. **Princípios de Clean Code**
 
 - **Legibilidade**: O código deve ser escrito de forma que seja facilmente compreendido por outros desenvolvedores. Utilize nomes descritivos e evite técnicas complexas desnecessárias.
 - **Funções Pequenas e Simples**: Mantenha as funções pequenas e com uma única responsabilidade. Isso facilita a compreensão e a reutilização do código.
-
-
 
 
 ## Colaboradores
