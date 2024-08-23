@@ -2,12 +2,12 @@ import { DataTypes } from "sequelize";
 
 export const createUserModel = async (sequelize) => {
     const User = sequelize.define('User', {
-        idUser: {
+        idUsuario: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
+        nomeUsuario: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -17,11 +17,11 @@ export const createUserModel = async (sequelize) => {
             isLowercase: true,
             unique: true
         },
-        password: {
+        senha: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        role: {
+        funcao: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -30,16 +30,18 @@ export const createUserModel = async (sequelize) => {
             allowNull: false,
             unique: true
         },
-        contact: {
+        contato: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        address: {
+        endereco: {
             type: DataTypes.STRING,
             allowNull: false
         }
     }, {
-        timestamps: true
+        // Configurações adicionais para o modelo
+        tableName: 'usuarios', // Define o nome da tabela no banco de dados
+        timestamps: true // Adiciona colunas createdAt e updatedAt para rastreamento de alterações
     });
 
     return User;

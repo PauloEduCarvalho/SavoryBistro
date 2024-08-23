@@ -98,7 +98,7 @@ Antes de fazer um commit, use os seguintes prefixos para categorizar o tipo de m
 
 ### Segurança e Acesso
 
-- **Controle de Acesso**: Defina permissões adequadas para quem pode acessar e modificar o repositório.
+- **Contfuncao de Acesso**: Defina permissões adequadas para quem pode acessar e modificar o repositório.
 
 # Boas Práticas de Codificação
 
