@@ -1,7 +1,7 @@
 import express from "express";
 import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from "../controller/userController.js";
 import { createDish, getAllDishes, getDishById, updateDish, deleteDish } from '../controller/dishController.js';
-
+import { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } from '../controller/orderController.js';
 const router = express.Router();
 
 // Rota para criar um novo usuário
@@ -33,5 +33,13 @@ router.put('/dishes/:id', updateDish);
 
 // Rota para excluir um prato pelo ID
 router.delete('/dishes/:id', deleteDish);
+
+// Rotas para pedidos 
+
+router.post('/orders', createOrder);
+router.get('/orders', getAllOrders);
+router.get('/orders/:id', getOrderById);
+router.put('/orders/:id', updateOrder);
+router.delete('/orders/:id', deleteOrder);
 
 export default router;

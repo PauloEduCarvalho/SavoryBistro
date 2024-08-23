@@ -2,6 +2,11 @@ import { DataTypes } from "sequelize";
 
 export const createUserModel = async (sequelize) => {
     const User = sequelize.define('User', {
+        idUser: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
