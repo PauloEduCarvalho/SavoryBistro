@@ -1,7 +1,31 @@
 .containerButton {
-    width: 80%;
-    height: 80%;
-    display: table-column;
-    
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide em duas colunas */
+    grid-gap: 20px; /* Espaçamento entre os botões */
+    width: 80%; /* Largura do container */
+    margin: 0 auto; /* Centraliza o container na tela */
+    height: 80vh; /* Ocupa 80% da altura da tela */
+    align-items: center; /* Centraliza verticalmente */
+    align-content: center;
+}
 
+.navButton {
+    padding: 40px 20px; /* Tamanho grande dos botões */
+    font-size: 24px; /* Tamanho da fonte maior */
+    background-color: #C83131; /* Cor de fundo dos botões */
+    color: white; /* Cor do texto */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 40%; /* Ocupa toda a coluna */
+    height: 40%; /* Ocupa toda a linha */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButton:hover {
+    background-color: #A52A2A; /* Muda a cor ao passar o mouse */
 }

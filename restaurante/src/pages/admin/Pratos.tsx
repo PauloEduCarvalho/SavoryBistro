@@ -4,10 +4,15 @@ import './../../Default.css';
 import './Pratos.css';
 import PratosTable from '../../components/PratosTable';
 import { api } from '../../Server/api';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 function Pratos() {
     const [pratos, setPratos] = useState<Prato[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const { register, handleSubmit, reset } = useForm();
+    
+    const Navigate = useNavigate();
 
     const fetchAllPratos = async () => {
         try {
@@ -19,9 +24,33 @@ function Pratos() {
         }
     };
 
+    const onSubmit = async (data:any) => {
+
+        try {
+
+
+            // chama post para adicionar no bnco de dados
+            await api.post("/dishes", data
+             );
+
+            // reseta os campos do formulário
+            reset();
+        } catch (error) {
+            console.log("Ocorreu um erro", error);
+        }        
+    };
+
+    const EditarPrato = (id:number) => {
+        Navigate(`/admin/pratos/PratoSelecionado/${id}`);
+    };
+
+    const ExcluirPrato = async (id:number) => {
+        await api.delete(`/dishes/${id}`);
+    }
+
     useEffect(() => {
         fetchAllPratos();
-    }, []);
+    }, [Pratos]);
 
     return (
         <div className='tela'>
@@ -29,22 +58,40 @@ function Pratos() {
             <main className='content'>
                 <h1 className='title1'>Pratos</h1>
                 <h3 className='title2'>Cadastrar Prato</h3>
-                <div className='addContent'>
-                    <input type="text" placeholder="ID_Prato" />
-                    <input type="text" placeholder="Nome" />
-                    <input type="text" placeholder="Valor" />
-                    <input type="text" placeholder="Custo_Prod" />
-                    <button className="edit">Adicionar</button>
-                </div>
-
-                <h3 className='title2'>Consultar prato</h3>
-                <div className='findContent'>
-                    <input type="text" placeholder="Digite o nome" />
-                    <button className="find">Consultar</button>
-                </div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <input {...register("nome")} type="text" placeholder="Nome" />
+                    <input {...register("valorPrato")} type="text" placeholder="ValorPrato" />
+                    <input {...register("custoProducao")} type="text" placeholder="CustoProducao" />
+                    <input type="submit" value="Adicionar"/>
+                </form>
 
                 <h3 className='title2'>Lista</h3>
-                {error ? <p className="error">{error}</p> : <PratosTable pratos={pratos} refreshPratos={fetchAllPratos} />}
+                <table>
+                    <thead>
+                        <tr>
+                        <th>nome</th>
+                        <th>valor</th>
+                        <th>custoProducao</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {pratos.map(pratos => (
+                        <tr key={pratos.idPrato}>
+                            <td>{pratos.nome}</td>
+                            <td>{pratos.valorPrato}</td>
+                            <td>{pratos.custoProducao}</td>
+                            <td> 
+                                <button onClick={() => EditarPrato(pratos.idPrato)}>
+                                    Editar
+                                </button>
+                                <button onClick={() => ExcluirPrato(pratos.idPrato)}>
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                        ))}
+                    </tbody>
+                    </table>
 
             </main>
             <footer className="footer">Admin</footer>

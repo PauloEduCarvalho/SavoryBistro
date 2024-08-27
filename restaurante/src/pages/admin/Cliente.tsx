@@ -1,5 +1,4 @@
 import './../../Default.css';
-import './Cliente.css';
 
 import { api } from '../../Server/api';
 import { useEffect, useState } from 'react';
@@ -36,8 +35,6 @@ function Cliente() {
     const onSubmit = async (data:any) => {
 
         try {
-
-
             // chama post para adicionar no bnco de dados
             await api.post("/users", { 
                 funcao: "cliente",
