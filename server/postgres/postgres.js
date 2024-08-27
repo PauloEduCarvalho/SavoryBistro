@@ -7,7 +7,7 @@ import { createDishModel } from '../model/dishSchema.js'; // Importe a função 
 import { createOrderModel } from '../model/orderSchema.js';
 
 // Cria uma instância do Sequelize para conectar ao banco de dados PostgreSQL
-const sequelize = new Sequelize('Restaurante', 'postgres', 'lariel123', {
+const sequelize = new Sequelize('Restaurante', 'postgres', '88292031', {
     host: 'localhost', // Endereço do servidor de banco de dados
     dialect: 'postgres' // Dialeto do banco de dados, neste caso PostgreSQL
 });

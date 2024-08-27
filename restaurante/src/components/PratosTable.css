@@ -1,0 +1,21 @@
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Permite rolar horizontalmente se a tabela for maior que a tela */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços entre células */
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #D9D9D9;
+    color: black;
+  }
+  

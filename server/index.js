@@ -2,8 +2,11 @@
 import express from 'express';
 import { connection } from './postgres/postgres.js';
 import router from './view/routes.js';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cors()) // Para permitir que o frontend acesse o backend
 
 app.use(express.json()); // Para permitir que o express entenda JSON
 app.use(router);
