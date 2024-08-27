@@ -13,7 +13,7 @@ function RegisterPage() {
 
         setIsSuccess(true);
         setTimeout(() => {
-            navigate('/admin/pratos'); // Redireciona para a tela Pratos após 2 segundos
+            navigate('pratos'); // Redireciona para a tela Pratos após 2 segundos
         }, 2000);
 
     };

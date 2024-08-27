@@ -1,32 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-interface Prato {
-  id: number;
+export interface Prato {
+  idPrato: number;
   nome: string;
-  valor: number;
-  custo_prod: number;
+  valorPrato: number;
+  custoProducao: number;
 }
 
 
-// teste para carregar os dados de pratos com base no arquivo json
-const PratosTable: React.FC = () => {
-  const [pratos, setPratos] = useState<Prato[]>([]);
+interface PratosTableProps {
+  pratos: Prato[]; // Pratos a serem exibidos
+  refreshPratos: () => void; // Função para atualizar a lista de pratos
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('./../pages/admin/pratos.json');
-
-        const data: Prato[] = await response.json();
-        setPratos(data);
-      } catch (error) {
-        console.error('Erro ao carregar os dados:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+const PratosTable: React.FC<PratosTableProps> = ({ pratos, refreshPratos }) => {
   return (
     <div className="table-container">
       <table>
@@ -41,11 +28,11 @@ const PratosTable: React.FC = () => {
         <tbody>
           {pratos.length > 0 ? (
             pratos.map(prato => (
-              <tr key={prato.id}>
-                <td>{prato.id}</td>
+              <tr key={prato.idPrato}>
+                <td>{prato.idPrato}</td>
                 <td>{prato.nome}</td>
-                <td>{prato.valor.toFixed(2)} R$</td>
-                <td>{prato.custo_prod.toFixed(2)} R$</td>
+                <td> R$ {prato.valorPrato}</td>
+                <td> R$ {prato.custoProducao}</td>
               </tr>
             ))
           ) : (
@@ -55,8 +42,12 @@ const PratosTable: React.FC = () => {
           )}
         </tbody>
       </table>
+      {/* Botão para recarregar os pratos */}
+      <button onClick={refreshPratos}>Recarregar Pratos</button>
     </div>
   );
-}
+};
 
 export default PratosTable;
+
+

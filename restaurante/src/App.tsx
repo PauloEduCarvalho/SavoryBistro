@@ -5,6 +5,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Pratos from './pages/admin/Pratos';
 import FinalizarPedido from './pages/client/FinalizarPedido';
 import PratosCliente from './pages/client/PratosCliente';
+import Clientes from './pages/admin/Cliente';  
+import ClienteSelecionado from './pages/admin/ClienteSelecionado';
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
         <Route path="/admin/pratos" element={<Pratos />} />
         <Route path="/finalizar-pedido" element={<FinalizarPedido />} />
         <Route path="/pratos" element={<PratosCliente />} />
+        <Route path="/admin/menu" element={<PratosCliente />} />
+        <Route path="/admin/clientes" element={<Clientes />} />
+        <Route path="/admin/clientes/clienteSelecionado/:id" element={<ClienteSelecionado />} />
       </Routes>
     </BrowserRouter>
   );
