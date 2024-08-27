@@ -1,0 +1,56 @@
+.layout {
+    background-color: aliceblue;
+}
+
+.header {
+    font-size: 40px;
+}
+
+.title1 {
+    margin-top: 10px;
+    font: bold;
+
+}
+
+.addContent, .findContent {
+    display: inline-block;
+    flex-direction:row;
+    background-color: #92B885;
+    border: none;
+    height: 80px;
+    width: 70%;
+    margin-bottom: 30px;
+
+}
+
+.addContent input , .findContent input {
+    background-color: transparent;
+    width: 20%;
+    height: 100%;
+    border: none;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.findContent{
+    background-color: #3C90DD;
+    width: 35%;
+}
+
+.edit, .find{
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font: inter;
+    font: bold;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.find {
+    margin-left: 300px;
+
+}
+
+
+

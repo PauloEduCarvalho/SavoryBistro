@@ -1,0 +1,37 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+  
+
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+  
+.header,
+.footer {
+    background-color: #C83131;
+    color: white;
+    text-align:left;
+    padding: 20px;
+    flex-shrink: 0;
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5); /* Inner Shadow */
+  }
+  
+  .content {
+    flex: 1; /* Faz o conteúdo central expandir */
+    padding: 20px;
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo for muito grande */
+  }
+
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
