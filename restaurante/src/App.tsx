@@ -1,20 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import LoginPage from './pages/home/LoginPage'
+import RegisterPage from './pages/home/RegisterPage';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Pratos from './pages/admin/Pratos';
+import FinalizarPedido from './pages/client/FinalizarPedido';
+import PratosCliente from './pages/client/PratosCliente';
 
 function App() {
   return (
-    <body>
-      <main className = 'centralize'>
-          <h1 className = 'title'>SavoryBistro</h1>
-          <div className='container'>
-            <h1 className='login'>Login</h1>
-            <input type="email" placeholder="Digite o e-mail" />
-            <input type="password" placeholder="Digite a senha" />
-            <button>Entrar</button>
-          </div>
-      </main>
-    </body>
+    // definir rotas para navegação entre as páginas
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/admin/pratos" element={<Pratos />} />
+        <Route path="/finalizar-pedido" element={<FinalizarPedido />} />
+        <Route path="/pratos" element={<PratosCliente />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
