@@ -1,4 +1,4 @@
-/* Estilos para a tela de pedidos */
+/* Estilos para a tela de clientes */
 .tela {
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     background-color: #C83131;
     color: white;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     font-size: 24px;
     font-weight: bold;
     display: flex;
@@ -105,4 +105,5 @@ table td button:hover {
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
+    display: flex;
 }

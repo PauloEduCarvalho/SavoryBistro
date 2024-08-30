@@ -12,6 +12,10 @@ export const getUserByIdService = async (id) => {
     return await UserModel.findByPk(id);
 };
 
+export const getUserByEmailService = async (email) => {
+    return await UserModel.findOne({ where: { email } });
+}
+
 export const updateUserService = async (id, updatedData) => {
     const user = await UserModel.findByPk(id);
     if (user) {

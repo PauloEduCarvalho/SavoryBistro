@@ -1,56 +1,106 @@
+/* Estilos para a tela de pratos */
 .tela {
-    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4;
 }
 
 .header {
-    font-size: 40px;
+    background-color: #C83131;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
 }
 
 .title1 {
-    margin-top: 10px;
-    font: bold;
-
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.addContent, .findContent {
-    display: inline-block;
-    flex-direction:row;
-    background-color: #92B885;
-    border: none;
-    height: 80px;
-    width: 70%;
+.title2 {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 30px;
-
 }
 
-.addContent input , .findContent input {
-    background-color: transparent;
-    width: 20%;
-    height: 100%;
+.testSubmit {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input[type="submit"] {
+    background-color: #C83131;
+    color: white;
+    padding: 10px;
     border: none;
-    margin-left: 10px;
-    font-size: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.findContent{
-    background-color: #3C90DD;
-    width: 35%;
+form input[type="submit"]:hover {
+    background-color: #a02626;
 }
 
-.edit, .find{
-    height: 100%;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #C83131;
+    color: white;
+}
+
+table td {
+    background-color: #fff;
+}
+
+table td button {
+    background-color: #C83131;
+    color: white;
     border: none;
-    background-color: transparent;
-    font: inter;
-    font: bold;
-    font-size: 20px;
-    text-decoration: underline;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 5px;
 }
 
-.find {
-    margin-left: 300px;
-
+table td button:hover {
+    background-color: #a02626;
 }
 
-
-
+.footer {
+    background-color: #C83131;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}

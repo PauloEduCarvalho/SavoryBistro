@@ -1,30 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 import './../../Default.css';
-
+import './Pedidos.css';
 import { api } from '../../Server/api';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import ClienteSelecionado from './ClienteSelecionado';
 import { useNavigate } from 'react-router-dom';
 
 
 
 
 export type PedidoType = {
-    nomeDoUsuario: number;
-    valorTotalPerdido: string;
+
+    nomeDoCliente: string;
+    valorTotalPedido: number;
+
     idUsuario: number;
     idPrato: number;
 };
 
 
-
-
-
-
 function Pedidos() {
     const [pedidos, setPedido] = useState<PedidoType[]>([]);
     const { register, handleSubmit, reset } = useForm();
-    const [inputID, setInputID] = useState();
+    // const [inputID, setInputID] = useState();
 
     const Navigate = useNavigate();
 
@@ -54,19 +53,20 @@ function Pedidos() {
 
 
     // tentativa de criar a busca pelo id do pedido
-    const fetchPedido = async (data:any) => {
-        console.log(data)
-        try {
-            const response = await api.get(`/users/${data.idPedido}`);
+    
+    // const fetchPedido = async (data:any) => {
+    //     console.log(data)
+    //     try {
+    //         const response = await api.get(`/users/${data.idPedido}`);
 
-            setPedido([response.data]);
-        } catch(error) {
-            console.log("Ocorreu um erro ",error);
-        }
-    };
+    //         setPedido([response.data]);
+    //     } catch(error) {
+    //         console.log("Ocorreu um erro ",error);
+    //     }
+    // };
 
     const EditarPedido = (id:number) => {
-        Navigate(`/admin/pedidos/PedidoSelecionado/${id}`);
+        Navigate(`/admin/pedidos/pedidoSelecionado/${id}`);
 
     };
 
@@ -86,12 +86,10 @@ function Pedidos() {
 
                 <h3 className='title2'>Adicionar Pedido</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("nomeUsuario")} type="text" placeholder="Nome" />
-                    <input {...register("contato")} type="text" placeholder="Contato" />
-                    <input {...register("endereco")} type="text" placeholder="Endereço" />
-                    <input {...register("cpf")} type="text" placeholder="CPF" />
-                    <input {...register("email")} type="text" placeholder="Email" />
-                    <input {...register("senha")} type="password" placeholder="senha" />
+                    <input {...register("nomeDoCliente")} type="text" placeholder="nome" />
+                    <input {...register("valorTotalPedido")} type="text" placeholder="valor do pedido" />
+                    <input {...register("idUsuario")} type="text" placeholder="Endereço" />
+                    <input {...register("idPrato")} type="text" placeholder="id Prato" />
 
                     <input type="submit" value="Adicionar"/>
                 </form>
@@ -99,19 +97,19 @@ function Pedidos() {
                 <table>
                     <thead>
                         <tr>
-                        <th>ID</th>
                         <th>Nome</th>
-                        <th>Email</th>
-                        <th>CPF</th>
-                        <th>Contato</th>
-                        <th>Endereço</th>
+                        <th>Valor Total</th>
+                        <th>ID Usuario</th>
+                        <th>ID prato</th>
                         </tr>
                     </thead>
                     <tbody>
                         {pedidos.map(pedidos => (
-                        <tr>
-                            <td>{pedidos.nomeDoUsuario}</td>
-                            <td>{pedidos.valorTotalPerdido}</td>
+
+                        <tr key={pedidos.idPrato}>
+                            <td>{pedidos.nomeDoCliente}</td>
+                            <td>{pedidos.valorTotalPedido}</td>
+
                             <td>{pedidos.idUsuario}</td>
                             <td>{pedidos.idPrato}</td>
                             <td> 

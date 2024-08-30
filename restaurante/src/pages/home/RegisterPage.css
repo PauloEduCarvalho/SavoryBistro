@@ -4,13 +4,13 @@
     justify-content: center;
     align-items: center;
     background: rgba(200, 49, 49, 1);
-    width: 60%; /* Diminuindo a largura do container */
+    width: 60%; 
     padding: 30px;
     border-radius: 50px;
     box-shadow: 10px 10px black;
 }
 
-.inputData {
+.inputForm {
     border: none;
     border-radius: 50px;
     box-shadow: 5px 5px 4px #232121;
@@ -24,8 +24,8 @@
     padding: 20px;
 }
 
-.inputData::placeholder {
-    opacity: 0.5; /* Placeholder mais opaco */
+.inputForm::placeholder {
+    opacity: 0.5; 
 }
 
 .inputRow {
@@ -36,7 +36,7 @@
 }
 
 .inputData {
-    width: 48%; /* Ajusta a largura dos inputs para ficarem lado a lado */
+    width: 48%; 
 }
 
 .buttonContainer {
@@ -46,7 +46,6 @@
     margin-top: 30px;
 }
 
-.selectButton {
+.registerButton {
     width: 30%;
-    justify-content: center;
 }
