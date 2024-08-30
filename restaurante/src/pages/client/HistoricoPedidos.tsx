@@ -1,5 +1,5 @@
 import './FinalizarPedido.css';
-
+import React from 'react';
 
 function FinalizarPedido() {
     return (
@@ -11,7 +11,7 @@ function FinalizarPedido() {
             
 
         </main>
-        <footer className="footer">Admin</footer>
+        <footer className="footer">Cliente</footer>
         </div>
 
     );

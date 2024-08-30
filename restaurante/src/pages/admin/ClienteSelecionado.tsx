@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 import {useParams } from 'react-router';
 import { api } from '../../Server/api';
 import { useEffect, useState } from 'react';
@@ -34,9 +36,6 @@ function ClienteSelecionado() {
         try {
             
             await api.put(`/users/${id}`, data);
-            
-
-            
             
         } catch (error) {
             console.log("Ocorreu um erro", error);

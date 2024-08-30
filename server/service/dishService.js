@@ -30,7 +30,7 @@ export const updateDish = async (id, updatedData) => {
 export const deleteDish = async (id) => {
     const dish = await DishModel.findByPk(id);
     if (dish) {
-        await dish.destroy();
+        await dish.destroy();   
         return true;
     }
     return false;

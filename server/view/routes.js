@@ -1,7 +1,7 @@
 import express from "express";
 
 // Importa as funções dos controladores para cada entidade
-import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from "../controller/userController.js";
+import { createUser, getAllUsers, getUserById, getUserByEmail, updateUser, deleteUser } from "../controller/userController.js";
 import { createDishController, getAllDishesController, getDishByIdController, updateDishController, deleteDishController } from '../controller/dishController.js';
 import { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } from '../controller/orderController.js';
 
@@ -24,6 +24,9 @@ router.put("/users/:id", updateUser);
 
 // Rota para excluir um usuário pelo ID
 router.delete("/users/:id", deleteUser);
+
+// Rota para buscar usuário pelo nome
+router.get("/users/login/:email", getUserByEmail);
 
 // Rotas para pratos
 

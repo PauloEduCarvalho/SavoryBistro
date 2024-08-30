@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { Prato } from '../../components/PratosTable'; // Importa a interface Prato
 import './../../Default.css';
 import './Pratos.css';
-import PratosTable from '../../components/PratosTable';
+// import PratosTable from '../../components/PratosTable';
 import { api } from '../../Server/api';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+
 function Pratos() {
     const [pratos, setPratos] = useState<Prato[]>([]);
-    const [error, setError] = useState<string | null>(null);
+    // const [prato, setPrato] = useState<Prato>();
     const { register, handleSubmit, reset } = useForm();
     
     const Navigate = useNavigate();
@@ -17,21 +19,30 @@ function Pratos() {
     const fetchAllPratos = async () => {
         try {
             const response = await api.get("/dishes");
-            console.log(response);
             setPratos(response.data);
         } catch (error) {
             console.log("Ocorreu um erro ",error);
         }
     };
 
+    /*
+    const fetchPrato = async () {
+            try {
+                const response = await api.get(`/dishes/${id}`);
+                console.log(response.data);
+                setPrato(response.data);
+            } catch(error) {
+                console.log("Ocorreu um erro ",error);
+            }
+    };
+    */
+
     const onSubmit = async (data:any) => {
 
         try {
 
-
             // chama post para adicionar no bnco de dados
-            await api.post("/dishes", data
-             );
+            await api.post("/dishes", data);
 
             // reseta os campos do formulário
             reset();
@@ -41,7 +52,7 @@ function Pratos() {
     };
 
     const EditarPrato = (id:number) => {
-        Navigate(`/admin/pratos/PratoSelecionado/${id}`);
+        Navigate(`/admin/pratos/pratoSelecionado/${id}`);
     };
 
     const ExcluirPrato = async (id:number) => {
@@ -50,7 +61,7 @@ function Pratos() {
 
     useEffect(() => {
         fetchAllPratos();
-    }, [Pratos]);
+    }, [pratos]);
 
     return (
         <div className='tela'>
@@ -59,9 +70,9 @@ function Pratos() {
                 <h1 className='title1'>Pratos</h1>
                 <h3 className='title2'>Cadastrar Prato</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("nome")} type="text" placeholder="Nome" />
-                    <input {...register("valorPrato")} type="text" placeholder="ValorPrato" />
-                    <input {...register("custoProducao")} type="text" placeholder="CustoProducao" />
+                    <input {...register("nome")} className="testSubmit" type="text" placeholder="Nome" />
+                    <input {...register("valorPrato")} type="testSubmit" placeholder="ValorPrato" />
+                    <input {...register("custoProducao")} type="testSubmit" placeholder="CustoProducao" />
                     <input type="submit" value="Adicionar"/>
                 </form>
 

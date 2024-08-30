@@ -1,22 +1,39 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
+import { api } from '../../Server/api';
+import { useForm } from 'react-hook-form';
 
 function RegisterPage() {
     const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
     const navigate = useNavigate();
+    // const [cliente, setCliente] = useState<ClienteType>();
+    const { register, handleSubmit} = useForm();
 
-    const handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
 
-        /* Simula o cadastro de um usuário. */
 
-        setIsSuccess(true);
-        setTimeout(() => {
-            navigate('pratos'); // Redireciona para a tela Pratos após 2 segundos
-        }, 2000);
+    const onSubmit = async (data:any) => {
 
+        try {
+
+            // chama post para adicionar no bnco de dados
+            await api.post("/users", {
+                funcao: "cliente",
+                ...data
+            });
+
+            setIsSuccess(true);
+            setTimeout(() => {
+                navigate('/'); // Redireciona para a tela Pratos após 2 segundos
+            }, 2000);
+
+        } catch (error) {
+            console.log("Ocorreu um erro", error);
+        }        
     };
+
+
 
     return (
         <body>
@@ -25,21 +42,21 @@ function RegisterPage() {
                 <div className='container'>
                     <h1 className='login'>Cadastro</h1>
                     {isSuccess === null ? (
-                        <form onSubmit={handleRegister}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='inputRow'>
-                                <input className='inputData' type="text" placeholder="Digite o nome" required />
-                                <input className='inputData' type="email" placeholder="Digite o e-mail" required />
+                                <input {...register("nomeUsuario")} className='inputForm' type="text" placeholder="Digite o nome" required />
+                                <input {...register("email")} className='inputForm' type="email" placeholder="Digite o e-mail" required />
                             </div>
                             <div className='inputRow'>
-                                <input className='inputData' type="text" placeholder="Digite o endereço" required />
-                                <input className='inputData' type="text" placeholder="Digite o CPF" required />
+                                <input {...register("endereco")} className='inputForm' type="text" placeholder="Digite o endereço" required />
+                                <input {...register("cpf")} className='inputForm' type="text" placeholder="Digite o CPF" required />
                             </div>
                             <div className='inputRow'>
-                                <input className='inputData' type="text" placeholder="Digite o contato" required />
-                                <input className='inputData' type="password" placeholder="Digite a senha" required />
+                                <input {...register("contato")} className='inputForm' type="text" placeholder="Digite o contato" required />
+                                <input {...register("senha")} className='inputForm' type="password" placeholder="Digite a senha" required />
                             </div>
                             <div className='buttonContainer'>
-                                <button className='selectButton' type="submit">Cadastrar</button>
+                                <input className='registerButton' type="submit" value="Cadastrar"/>
                             </div>
                         </form>
                     ) : isSuccess ? (

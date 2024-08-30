@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './../../Default.css';
-
+import './Cliente.css';
 import { api } from '../../Server/api';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import ClienteSelecionado from './ClienteSelecionado';
 import { useNavigate } from 'react-router-dom';
-
+import React from 'react';
 
 
 
@@ -21,14 +21,10 @@ export type ClienteType = {
 };
 
 
-
-
-
-
 function Cliente() {
     const [clientes, setClientes] = useState<ClienteType[]>([]);
     const { register, handleSubmit, reset } = useForm();
-    const [inputID, setInputID] = useState();
+    // const [inputID, setInputID] = useState();
 
     const Navigate = useNavigate();
 
@@ -61,20 +57,19 @@ function Cliente() {
 
 
     // tentativa de criar a busca pelo id do usuário
-    const fetchCliente = async (data:any) => {
-        console.log(data)
-        try {
-            const response = await api.get(`/users/${data.idUsuario}`);
+    // const fetchCliente = async (data:any) => {
+    //     console.log(data)
+    //     try {
+    //         const response = await api.get(`/users/${data.idUsuario}`);
 
-            setClientes([response.data]);
-        } catch(error) {
-            console.log("Ocorreu um erro ",error);
-        }
-    };
+    //         setClientes(response.data);
+    //     } catch(error) {
+    //         console.log("Ocorreu um erro ",error);
+    //     }
+    // };
 
     const EditarCliente = (id:number) => {
         Navigate(`/admin/clientes/ClienteSelecionado/${id}`);
-
     };
 
     const ExcluirCliente = async (id:number) => {
