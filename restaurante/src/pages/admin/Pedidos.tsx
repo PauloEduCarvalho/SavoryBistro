@@ -11,12 +11,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 export type PedidoType = {
-
+    idPedido: number;
     nomeDoCliente: string;
     valorTotalPedido: number;
 
     idUsuario: number;
-    idPrato: number;
+    idPrato: number[] | number;
 };
 
 
@@ -30,10 +30,9 @@ function Pedidos() {
     const onSubmit = async (data:any) => {
 
         try {
-            // chama post para adicionar no bnco de dados
+
             await api.post("/orders", data);
 
-            // reseta os campos do formulário
             reset();
         } catch (error) {
             console.log("Ocorreu um erro", error);
@@ -52,18 +51,19 @@ function Pedidos() {
     };
 
 
-    // tentativa de criar a busca pelo id do pedido
+    //tentativa de criar a busca pelo id do pedido
     
-    // const fetchPedido = async (data:any) => {
-    //     console.log(data)
-    //     try {
-    //         const response = await api.get(`/users/${data.idPedido}`);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const fetchPedido = async (data:any) => {
+        console.log(data)
+        try {
+            const response = await api.get(`/users/${data.idPedido}`);
 
-    //         setPedido([response.data]);
-    //     } catch(error) {
-    //         console.log("Ocorreu um erro ",error);
-    //     }
-    // };
+            setPedido([response.data]);
+        } catch(error) {
+            console.log("Ocorreu um erro ",error);
+        }
+    };
 
     const EditarPedido = (id:number) => {
         Navigate(`/admin/pedidos/pedidoSelecionado/${id}`);
@@ -76,7 +76,7 @@ function Pedidos() {
 
     useEffect(() => {
         fetchAllPedidos();
-    },[pedidos]);
+    },[]);
 
     return (
         <div className='tela'>
@@ -88,7 +88,7 @@ function Pedidos() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input {...register("nomeDoCliente")} type="text" placeholder="nome" />
                     <input {...register("valorTotalPedido")} type="text" placeholder="valor do pedido" />
-                    <input {...register("idUsuario")} type="text" placeholder="Endereço" />
+                    <input {...register("idUsuario")} type="text" placeholder="id Usuario" />
                     <input {...register("idPrato")} type="text" placeholder="id Prato" />
 
                     <input type="submit" value="Adicionar"/>
@@ -106,14 +106,14 @@ function Pedidos() {
                     <tbody>
                         {pedidos.map(pedidos => (
 
-                        <tr key={pedidos.idPrato}>
+                        <tr key={pedidos.idPedido}>
                             <td>{pedidos.nomeDoCliente}</td>
                             <td>{pedidos.valorTotalPedido}</td>
 
                             <td>{pedidos.idUsuario}</td>
                             <td>{pedidos.idPrato}</td>
                             <td> 
-                                <button onClick={() => EditarPedido(pedidos.idPrato)}>
+                                <button onClick={() => EditarPedido(pedidos.idPedido)}>
                                     Editar
                                 </button>
                                 <button onClick={() => ExcluirPedido(pedidos.idUsuario)}>

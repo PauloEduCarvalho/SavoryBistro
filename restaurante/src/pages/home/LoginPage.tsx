@@ -56,13 +56,14 @@ function LoginPage() {
                     <input {...register("email")} className="testSubmit" type="text" placeholder="e-mail" />
                     <input {...register("senha")} type="password" placeholder="senha" />
                     <input type="submit" value="Entrar"/>
+                    <button 
+                      className= 'selectButton'
+                      onClick={() => handleNavigation('/register')}
+                      >Cadastrar
+                    </button>
             </form>
 
-            <button 
-                className= 'selectButton'
-                onClick={() => handleNavigation('/register')}
-                >Cadastrar
-            </button>
+
 
           </div>
       </main>

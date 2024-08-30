@@ -11,22 +11,25 @@ import { useNavigate } from 'react-router-dom';
 
 function Pratos() {
     const [pratos, setPratos] = useState<Prato[]>([]);
-    // const [prato, setPrato] = useState<Prato>();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [prato, setPrato] = useState<Prato>();
     const { register, handleSubmit, reset } = useForm();
     
-    const Navigate = useNavigate();
+    const Navigate = useNavigate(); 
 
     const fetchAllPratos = async () => {
         try {
             const response = await api.get("/dishes");
             setPratos(response.data);
+            console.log(response.data);
         } catch (error) {
             console.log("Ocorreu um erro ",error);
         }
     };
 
-    /*
-    const fetchPrato = async () {
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const fetchPrato = async (id:number) => {
             try {
                 const response = await api.get(`/dishes/${id}`);
                 console.log(response.data);
@@ -35,7 +38,7 @@ function Pratos() {
                 console.log("Ocorreu um erro ",error);
             }
     };
-    */
+
 
     const onSubmit = async (data:any) => {
 
@@ -70,9 +73,9 @@ function Pratos() {
                 <h1 className='title1'>Pratos</h1>
                 <h3 className='title2'>Cadastrar Prato</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("nome")} className="testSubmit" type="text" placeholder="Nome" />
-                    <input {...register("valorPrato")} type="testSubmit" placeholder="ValorPrato" />
-                    <input {...register("custoProducao")} type="testSubmit" placeholder="CustoProducao" />
+                    <input {...register("nome")}  type="text" placeholder="Nome" />
+                    <input {...register("valorPrato")} type="text" placeholder="ValorPrato" />
+                    <input {...register("custoProducao")} type="text" placeholder="CustoProducao" />
                     <input type="submit" value="Adicionar"/>
                 </form>
 

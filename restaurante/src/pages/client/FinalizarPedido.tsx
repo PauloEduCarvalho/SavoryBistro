@@ -4,15 +4,41 @@ import './FinalizarPedido.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Prato } from '../../components/PratosTable';
 import React from 'react';
+import { useLogin } from '../../hooks/useLogin';
+import { api } from '../../Server/api';
 
 function FinalizarPedido() {
     const location = useLocation();
     const cart = (location.state as { cart: Prato[] }).cart || [];
     const navigate = useNavigate();
 
+    const user = useLogin();
+
     const totalValue = cart.reduce((total, prato) => total + prato.valorPrato, 0).toFixed(2);
 
-    const handlePurchase = () => {
+    const handlePurchase = async () => {
+        if(!user) {
+            alert('Nenhum cliente logado.')
+            return;
+        }
+
+        const orderData = {
+            nomeDoUsuario: user.getNomeUsuario(),
+            valorTotalPedido: parseFloat(totalValue),
+            idUsuario: user.getIdUsuario(),
+            pratos: cart.map(prato => prato.idPrato),
+        };
+
+        try {
+            await api.post('/orders', orderData);
+            alert('Compra realizada com sucesso!');
+            navigate('/pratos'); 
+        } catch (error) {
+            console.error('Erro ao finalizar a compra:', error);
+            alert('Ocorreu um erro ao finalizar a compra.');
+        }
+
+        
         alert('Compra realizada com sucesso!');
         // lembrar de configurar o pedido!!!!!!!!!!!!
 

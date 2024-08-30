@@ -106,16 +106,18 @@ body {
 
 
 .selectButton{
-    background: white;
-    border: none;
-    border-radius: 50px;
-    margin-bottom: 20px;
-    box-shadow: 5px 5px 5px #232121;
-    width: 30%;
-    font-size: 30px;
-    padding: 20px;
-    cursor: pointer;
-    margin-right: 20px;
+  background-color: #C83131;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
+
+.selectButton:hover {
+  background-color: #a02626;
+}
+
   
   

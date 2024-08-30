@@ -5,7 +5,7 @@ import { createOrderModel } from '../model/orderSchema.js';
 import { createOrderDishModel } from '../model/orderDishSchema.js'; 
 
 
-const sequelize = new Sequelize('Restaurante', 'postgres', 'lariel123', {
+const sequelize = new Sequelize('Restaurante', 'postgres', '88292031', {
     host: 'localhost',
     dialect: 'postgres'
 });
