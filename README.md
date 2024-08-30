@@ -22,7 +22,7 @@ O SavoryBistro é uma aplicação desenvolvida para facilitar a administração 
  - RFN02: O sistema deve ser feito de uma maneira que garanta manutenibilidade.
  - RFN03: O relatório deve ser gerado em até 5 segundos.
  - RFN04: O sistema deve ter diferentes níveis de acesso entre cliente e admin
- 
+
 ## Tecnologias Utilizadas 
 - JavaScript (a versão depende do ambiente de execução, normalmente suportada pela versão node apresentada abaixo)
 - HTML5
