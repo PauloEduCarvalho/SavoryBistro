@@ -1,9 +1,27 @@
 import express from "express";
 
 // Importa as funções dos controladores para cada entidade
-import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from "../controller/userController.js";
-import { createDishController, getAllDishesController, getDishByIdController, updateDishController, deleteDishController } from '../controller/dishController.js';
-import { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } from '../controller/orderController.js';
+import {
+    createUser,
+    getAllUsers,
+    getUserById,
+    updateUser,
+    deleteUser
+} from "../controller/userController.js";
+import {
+    createDishController,
+    getAllDishesController,
+    getDishByIdController,
+    updateDishController,
+    deleteDishController
+} from '../controller/dishController.js';
+import {
+    createOrder,
+    getAllOrders,
+    getOrderById,
+    updateOrder,
+    deleteOrder
+} from '../controller/orderController.js';
 
 // Cria uma instância do roteador do Express
 const router = express.Router();

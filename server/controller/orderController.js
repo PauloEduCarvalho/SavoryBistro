@@ -7,18 +7,20 @@ import {
 } from '../service/orderService.js';
 
 export const createOrder = async (req, res) => {
-    const { nomeDoCliente, valorTotalPedido, idUsuario, idPrato } = req.body;
+    const { nomeDoUsuario, valorTotalPedido, idUsuario, pratos } = req.body;
 
-    if (!nomeDoCliente || !valorTotalPedido || !idUsuario || !idPrato) {
+    // Verifica se todos os campos obrigatórios estão presentes
+    if (!nomeDoUsuario || !valorTotalPedido || !idUsuario || !pratos || pratos.length === 0) {
         return res.status(400).json({ message: "Missing required fields" });
     }
 
     try {
+        // Cria o pedido e associa os pratos
         const newOrder = await createOrderService({
-            nomeDoCliente,
+            nomeDoUsuario,
             valorTotalPedido,
             idUsuario,
-            idPrato
+            pratos
         });
         res.status(201).json(newOrder);
     } catch (error) {
@@ -54,14 +56,14 @@ export const getOrderById = async (req, res) => {
 
 export const updateOrder = async (req, res) => {
     const { id } = req.params;
-    const { nomeDoCliente, valorTotalPedido, idUsuario, idPrato } = req.body;
+    const { nomeDoUsuario, valorTotalPedido, idUsuario, pratos } = req.body;
 
     try {
         const updatedOrder = await updateOrderService(id, {
-            nomeDoCliente,
+            nomeDoUsuario,
             valorTotalPedido,
             idUsuario,
-            idPrato
+            pratos
         });
         if (updatedOrder) {
             res.status(200).json(updatedOrder);

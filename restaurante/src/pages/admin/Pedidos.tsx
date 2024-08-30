@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export type PedidoType = {
-    nomeDoCliente: number;
+    nomeDoUsuario: number;
     valorTotalPerdido: string;
     idUsuario: number;
     idPrato: number;
@@ -110,7 +110,7 @@ function Pedidos() {
                     <tbody>
                         {pedidos.map(pedidos => (
                         <tr>
-                            <td>{pedidos.nomeDoCliente}</td>
+                            <td>{pedidos.nomeDoUsuario}</td>
                             <td>{pedidos.valorTotalPerdido}</td>
                             <td>{pedidos.idUsuario}</td>
                             <td>{pedidos.idPrato}</td>

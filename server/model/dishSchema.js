@@ -1,36 +1,34 @@
-// Importa a classe DataTypes do Sequelize para definir os tipos de dados dos campos
 import { DataTypes } from 'sequelize';
 
-// Define o modelo Dish
-export const createDishModel = async (sequelize) => {
-    // Cria o modelo 'Dish' usando o Sequelize, definindo a estrutura da tabela
+export const createDishModel = async (sequelize, Order) => {
     const Dish = sequelize.define('Dish', {
-        // Define a coluna 'idPrato' como chave primária e auto-incremento
         idPrato: {
-            type: DataTypes.INTEGER, // Tipo de dado INTEGER para o ID
-            primaryKey: true, // Define como chave primária
-            autoIncrement: true // O valor será auto-incrementado
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
         },
-        // Define a coluna 'nome' para o nome do prato
         nome: {
-            type: DataTypes.STRING, // Tipo de dado STRING para o nome do prato
-            allowNull: false // Não permite valores nulos
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        // Define a coluna 'valorPrato' para o valor do prato
         valorPrato: {
-            type: DataTypes.DOUBLE, // Tipo de dado DOUBLE para o valor do prato
-            allowNull: false // Não permite valores nulos
+            type: DataTypes.DOUBLE,
+            allowNull: false
         },
-        // Define a coluna 'custoProducao' para o custo de produção do prato
         custoProducao: {
-            type: DataTypes.DOUBLE, // Tipo de dado DOUBLE para o custo de produção
-            allowNull: false // Não permite valores nulos
+            type: DataTypes.DOUBLE,
+            allowNull: false
         }
     }, {
-        // Configurações adicionais para o modelo
-        timestamps: true, // Adiciona colunas de timestamps (createdAt e updatedAt)
-        tablenomeUsuario: 'pratos' // Define o nome da tabela no banco de dados
+        timestamps: true,
+        tableName: 'pratos'
     });
 
-    return Dish; // Retorna o modelo 'Dish' criado
+    // Verifique se Order foi definido corretamente antes de fazer a associação
+    if (Order) {
+        // Associação muitos-para-muitos com Order via OrderDish
+        Dish.belongsToMany(Order, { through: 'OrderDish', foreignKey: 'idPrato' });
+    }
+
+    return Dish;
 };
