@@ -56,6 +56,14 @@ server/
 │
 ├── view/
 │   └── routes.js
+|
+├── services/
+│   └── dishService.js
+│   ├── orderService.js
+│   └── userService.js
+|
+├── __tests__/
+|
 │   package.json          # Gerenciador de pacotes e scripts
 └── index.js              # Ponto principal de entrada do sistema
 │

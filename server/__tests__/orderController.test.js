@@ -7,7 +7,7 @@ jest.mock('../service/orderService.js');
 
 describe('Order Controller Tests', () => {
     it('should create an order successfully', async () => {
-        const req = { body: { nomeDoCliente: 'John', valorTotalPedido: 50, idUsuario: 1, idPrato: 2 } };
+        const req = { body: { nomeDoUsuario: 'John', valorTotalPedido: 50, idUsuario: 1, idPrato: 2 } };
         const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
         orderService.createOrderService.mockResolvedValue(req.body);
@@ -22,36 +22,36 @@ describe('Order Controller Tests', () => {
         const req = {};
         const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
-        orderService.getAllOrdersService.mockResolvedValue([{ nomeDoCliente: 'John' }]);
+        orderService.getAllOrdersService.mockResolvedValue([{ nomeDoUsuario: 'John' }]);
 
         await getAllOrders(req, res);
 
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith([{ nomeDoCliente: 'John' }]);
+        expect(res.json).toHaveBeenCalledWith([{ nomeDoUsuario: 'John' }]);
     });
 
     it('should return an order by ID', async () => {
         const req = { params: { id: '1' } };
         const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
-        orderService.getOrderByIdService.mockResolvedValue({ nomeDoCliente: 'John' });
+        orderService.getOrderByIdService.mockResolvedValue({ nomeDoUsuario: 'John' });
 
         await getOrderById(req, res);
 
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({ nomeDoCliente: 'John' });
+        expect(res.json).toHaveBeenCalledWith({ nomeDoUsuario: 'John' });
     });
 
     it('should update an order', async () => {
-        const req = { params: { id: '1' }, body: { nomeDoCliente: 'Updated John' } };
+        const req = { params: { id: '1' }, body: { nomeDoUsuario: 'Updated John' } };
         const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
-        orderService.updateOrderService.mockResolvedValue({ nomeDoCliente: 'Updated John' });
+        orderService.updateOrderService.mockResolvedValue({ nomeDoUsuario: 'Updated John' });
 
         await updateOrder(req, res);
 
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({ nomeDoCliente: 'Updated John' });
+        expect(res.json).toHaveBeenCalledWith({ nomeDoUsuario: 'Updated John' });
     });
 
     it('should delete an order', async () => {
