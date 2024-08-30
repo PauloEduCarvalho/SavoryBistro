@@ -16,7 +16,7 @@ describe('Order Service', () => {
     });
 
     test('should create a new order', async () => {
-        const orderData = { nomeDoUsuario: 'John', valorTotalPedido: 100, idUsuario: 1, pratos: [1, 2] };
+        const orderData = { nomeDoUsuario: 'Camily', valorTotalPedido: 100, idUsuario: 1, pratos: [1, 2] };
         const createdOrder = { ...orderData, id: 1, addDishes: jest.fn().mockResolvedValue(null) };
         OrderModel.create.mockResolvedValue(createdOrder);
         createdOrder.reload = jest.fn().mockResolvedValue(createdOrder);
@@ -24,7 +24,7 @@ describe('Order Service', () => {
         const result = await createOrderService(orderData);
 
         expect(OrderModel.create).toHaveBeenCalledWith(expect.objectContaining({
-            nomeDoUsuario: 'John',
+            nomeDoUsuario: 'Camily',
             valorTotalPedido: 100,
             idUsuario: 1
         }));
@@ -32,7 +32,7 @@ describe('Order Service', () => {
     });
 
     test('should update an existing order', async () => {
-        const orderData = { nomeDoUsuario: 'John', valorTotalPedido: 100, idUsuario: 1 };
+        const orderData = { nomeDoUsuario: 'Camily', valorTotalPedido: 100, idUsuario: 1 };
         OrderModel.findByPk.mockResolvedValue({
             ...orderData,
             update: jest.fn().mockResolvedValue({ ...orderData, valorTotalPedido: 120 })

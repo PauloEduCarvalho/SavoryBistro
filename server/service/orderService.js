@@ -4,6 +4,11 @@ import { OrderModel, UserModel, DishModel } from '../postgres/postgres.js';
 export const createOrderService = async (orderData) => {
     const { nomeDoUsuario, valorTotalPedido, idUsuario, pratos } = orderData;
 
+    // Validação de dados
+    if (valorTotalPedido <= 0) {
+        throw new Error('O valor total do pedido deve ser maior que zero.');
+    }
+
     // Cria o pedido com os dados fornecidos
     const newOrder = await OrderModel.create({ 
         nomeDoUsuario, 
@@ -13,12 +18,13 @@ export const createOrderService = async (orderData) => {
 
     // Adiciona pratos ao pedido se a lista de pratos estiver presente e não estiver vazia
     if (pratos && pratos.length > 0) {
-        await newOrder.addDishes(pratos); // Usa o método gerado pelo `belongsToMany` para adicionar pratos
+        await newOrder.addDishes(pratos);
     }
 
     // Retorna o pedido criado com os pratos associados (carrega a relação com os pratos)
     return newOrder.reload({ include: 'Dishes' });
 };
+
 
 // Função para obter todos os pedidos com seus pratos associados
 export const getAllOrdersService = async () => {

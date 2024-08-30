@@ -15,7 +15,7 @@ describe('User Service', () => {
     });
 
     test('should create a new user', async () => {
-        const userData = { nomeUsuario: 'Jane', email: 'jane@example.com', senha: 'password123' };
+        const userData = { nomeUsuario: 'camily', email: 'camily@example.com', senha: 'password123' };
         UserModel.create.mockResolvedValue(userData);
 
         const result = await createUserService(userData);
@@ -25,16 +25,16 @@ describe('User Service', () => {
     });
 
     test('should update an existing user', async () => {
-        const userData = { nomeUsuario: 'Jane', email: 'jane@example.com', senha: 'password123' };
+        const userData = { nomeUsuario: 'CamilydeBem', email: 'camily@example.com', senha: 'password123' };
         UserModel.findByPk.mockResolvedValue({
             ...userData,
-            update: jest.fn().mockResolvedValue({ ...userData, email: 'newemail@example.com' })
+            update: jest.fn().mockResolvedValue({ ...userData, email: 'camilydebem@example.com' })
         });
 
-        const result = await updateUserService(1, { email: 'newemail@example.com' });
+        const result = await updateUserService(1, { email: 'camilydebem@example.com' });
 
         expect(UserModel.findByPk).toHaveBeenCalledWith(1);
-        expect(result.email).toBe('newemail@example.com');
+        expect(result.email).toBe('camilydebem@example.com');
     });
 
     test('should delete a user by ID', async () => {
